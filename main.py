@@ -3,6 +3,7 @@ from pygame import *
 import time
    
 pygame.init()
+pygame.mixer.init()
 
 
 BLACK = (0, 0, 0)
@@ -25,7 +26,7 @@ def changefile (a, b):
     with open(filename, "w") as f:
         f.writelines(lines)
 
-filename = "savedlevel.txt" 
+filename = "levels/savedlevel.txt" 
 with open(filename, "r") as f:
         lines = f.readlines()       
 cnt = int(lines[0])
@@ -51,7 +52,6 @@ pause_txt = font.render("Pause", True, BLACK)
 pause_txt_rect = pause_txt.get_rect().center
 
 i=1
-pygame.mixer.init()
 pygame.mixer.music.load(f"music/music{i}.mp3")
 pygame.mixer.music.play(-1)
 
@@ -362,7 +362,7 @@ while running:
             elif event.key == pygame.K_SPACE and paused == True:
                 paused = False
                 
-            if event.key == pygame.K_с:
+            if event.key == pygame.K_c:
                 changefile(0,str(cnt))
                 changefile(1,str(player1.rect.x))
                 changefile(2,str(player1.rect.y))
